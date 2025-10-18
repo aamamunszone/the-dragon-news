@@ -7,6 +7,7 @@ import NewsDetailsLayout from '../layouts/NewsDetailsLayout/NewsDetailsLayout';
 import AuthLayout from '../layouts/AuthLayout/AuthLayout';
 import Login from '../pages/Auth/Login/Login';
 import Register from '../pages/Auth/Register/Register';
+import CategoryNews from '../pages/Home/CategoryNews/CategoryNews';
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,11 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: () => <Navigate to="home" replace /> },
       { path: 'home', Component: Home },
+      {
+        path: '/category/:id',
+        Component: CategoryNews,
+        loader: () => fetch('/data/news.json'),
+      },
       { path: 'about', Component: About },
       { path: 'career', Component: Career },
     ],
